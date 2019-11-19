@@ -13,7 +13,7 @@
 <body>
 	
 	<div id="container-fluid">
-		<header class="container" id="headbody">
+		<header class="container-fluid" id="headbody">
 			<nav class="navbar navbar-default" role="navigation">
 
 				<!-- Brand and toggle get grouped for better mobile display -->
@@ -30,18 +30,7 @@
 				<div class="collapse navbar-collapse navbar-ex1-collapse">
 
 					<ul class="nav navbar-nav navbar-right" id="menutren"> 
-						@yield('home') 
-						<!-- <li><a href="{{ asset('/') }}">Home</a></li>  -->     					
-						<li><a href="{{ asset('danh-sach') }}">Danh Sách</a></li>
-						<li><a href="{{ asset('che-do-loc') }}">Lọc Danh Sách</a></li>
-						@if(Session::has('user'))
-							<li><a href="{{ asset('them-thanh-vien') }}">Thêm thành viên</a></li>
-							<li><a href="{{ asset('them-hinh-anh') }}">Thêm hình ảnh</a></li>
-							<li><a href="{{ asset('dang-xuat') }}">Đăng Xuất</a></li>
-						@else
-							<li><a href="{{ asset('dang-nhap') }}">Đăng Nhập</a></li>
-						@endif
-											
+							<li><a href="{{ asset('dang-nhap') }}">Đăng Nhập</a></li>			
 					</ul>
 				</div><!-- /.navbar-collapse -->
 

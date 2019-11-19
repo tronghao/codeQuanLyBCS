@@ -13,7 +13,7 @@ class DanhSachModel extends Model
     public function getAllDanhSach()
     {
     	$kt = new DanhSachModel();
-    	$kq = $kt->join('lop', 'lop.MaLop', '=',  'sinhvien.MaLop')->join('covanhoctap', 'covanhoctap.MaCV', '=', 'sinhvien.MaCV')->get()->toArray();
+    	$kq = $kt->join('lop', 'lop.MaLop', '=',  'sinhvien.MaLop')->join('covanhoctap', 'covanhoctap.MaCV', '=', 'sinhvien.MaCV')->join('bomon', 'bomon.MaBoMon', '=', 'lop.MaBoMon')->get()->toArray();
     	return $kq;
     }
 
@@ -22,5 +22,22 @@ class DanhSachModel extends Model
     	$kt = new DanhSachModel();
     	$kq = $kt->where('MaSV','=',$maSV)->get()->toArray();
     	return $kq;
+    }
+
+    public function locDanhSach($cheDoLoc, $giaTriLoc)
+    {
+        $truong = '';
+        if($cheDoLoc == "Bộ Môn")
+            $truong = 'TenBoMon';
+        else if($cheDoLoc == "Lớp")
+            $truong = 'TenLop';
+        else if($cheDoLoc == "Khóa Học")
+            $truong = 'KhoaHoc';
+        else if($cheDoLoc == "Cố Vấn Học Tập")
+            $truong = 'HoTen_CV';
+        
+        $kt = new DanhSachModel();
+        $kq = $kt->join('lop', 'lop.MaLop', '=',  'sinhvien.MaLop')->join('covanhoctap', 'covanhoctap.MaCV', '=', 'sinhvien.MaCV')->join('bomon', 'bomon.MaBoMon', '=', 'lop.MaBoMon')->where($truong , '=', $giaTriLoc)->get()->toArray();
+        return $kq;
     }
 }

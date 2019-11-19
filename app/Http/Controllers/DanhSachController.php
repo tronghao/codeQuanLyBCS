@@ -11,10 +11,11 @@ use App\DanhSachModel;
 class DanhSachController extends Controller
 {
     public function getDanhSach()
-    {
+    {  
         $kt = new DanhSachModel();
         $data['duLieu'] = $kt->getAllDanhSach();
-        return view('danh-sach')->with($data);
+        return $data;
+
     }
 
     public function xemThongTin($maSV)
@@ -26,7 +27,7 @@ class DanhSachController extends Controller
 
     public function getCheDoLoc()
     {
-        return view('chon-che-do-loc');
+        return view('guest.chon-che-do-loc');
     }
 
     public function getLocDanhSach(Request $rq)
@@ -34,41 +35,11 @@ class DanhSachController extends Controller
     	
     }
 
-    public function postLocDanhSach(Request $rq)
+    public function locDanhSach($cheDoLoc, $giaTriLoc)
     {
-    	// $kt = new DanhSachModel();
-    	// if($rq->chedo == "Theo Lớp")
-    	// {
-    	// 	$data['duLieu'] = $kt->locTheoDoi(1);
-    	// }else if($rq->chedo == "Theo Bộ Môn")
-    	// {
-    	// 	$data['duLieu'] = $kt->locTheoDoi(2);
-    	// }
-    	// else if($rq->chedo == "Theo Khóa Học")
-    	// {
-    	// 	$data['duLieu'] = $kt->locTheoDoi(3);
-    	// }
-    	// else
-    	// {
-    	// 	$data['duLieu'] = $kt->locTheoCuuTNTT();
-    	// }
-    	// return view('loc-danh-sach')->with($data);
-        if($rq->chedo == "Theo Bộ Môn")
-        {
-
-        }else if($rq->chedo == "Theo Lớp")
-        {
-
-        }else if($rq->chedo == "Theo Khóa Học")
-        {
-
-        }else if($rq->chedo == "Theo CVHT")
-        {
-
-        }else
-        {
-            return redirect('che-do-loc');
-        } 
+        $kt = new DanhSachModel();
+    	$data['duLieu'] = $kt->locDanhSach($cheDoLoc, $giaTriLoc);
+        return $data;
     }
 
     // public function thongKe()
