@@ -528,4 +528,5 @@ return array(
     'SinhVien' => $baseDir . '/database/migrations/2019_11_09_110048_SinhVien.php',
     'TestCase' => $baseDir . '/tests/TestCase.php',
     'Text_Template' => $vendorDir . '/phpunit/php-text-template/src/Template.php',
+    'UserMigration' => $baseDir . '/database/migrations/2019_11_21_025100_UserMigration.php',
 );

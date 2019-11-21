@@ -12,13 +12,11 @@
 */
 
  Route::get('/', 'GuestController@getTrangChu');
+ Route::post('loc-danh-sach', 'GuestController@locDanhSach');
  Route::get('test', function(){
  	return view('guest.testLocDanhSach');
  });
- Route::get('xem-thong-tin/{id}', 'DanhSachController@xemThongTin');
- Route::get('che-do-loc', 'DanhSachController@getCheDoLoc');
- //Route::get('loc-danh-sach', 'DanhSachController@getLocDanhSach');
- Route::post('loc-danh-sach', 'GuestController@locDanhSach');
+Route::get('dang-nhap', 'UserController@dangNhap');
 // Route::get('thong-ke', 'DanhSachMienController@thongKe');
 // Route::get('xem-danh-sach-theo-khoa/{khoa}', 'DanhSachMienController@xemTheoKhoa');
 // Route::get('hinh-anh', 'DanhSachMienController@hinhAnh');
