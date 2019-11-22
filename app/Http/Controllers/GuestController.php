@@ -9,11 +9,20 @@ use App\Http\Controllers\DanhSachController;
 
 class GuestController extends Controller
 {
-    public function getTrangChu()
+    public function getTrangChu($id = null)
     {
-    	$ds = new DanhSachController();
-    	$data = $ds->getDanhSach();
-    	return view('guest.trang-chu')->with($data);
+        $ds = new DanhSachController();
+        $data = $ds->getDanhSach();
+        if($id == null)
+        {
+            return view('guest.trang-chu')->with(compact('data'));
+        }
+        else if($id == 1)
+        {
+            $info = "Tên tài khoản hoặc mật khẩu không đúng!";
+            return view('guest.trang-chu')->with(compact('info', 'data'));
+        }
+    	
     }
 
     public function locDanhSach(Request $rq)

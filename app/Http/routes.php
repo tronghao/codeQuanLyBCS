@@ -11,12 +11,12 @@
 |
 */
 
- Route::get('/', 'GuestController@getTrangChu');
+ Route::get('/{cd?}', 'GuestController@getTrangChu');
  Route::post('loc-danh-sach', 'GuestController@locDanhSach');
  Route::get('test', function(){
  	return view('guest.testLocDanhSach');
  });
-Route::get('dang-nhap', 'UserController@dangNhap');
+Route::post('dang-nhap', 'UserController@dangNhap');
 // Route::get('thong-ke', 'DanhSachMienController@thongKe');
 // Route::get('xem-danh-sach-theo-khoa/{khoa}', 'DanhSachMienController@xemTheoKhoa');
 // Route::get('hinh-anh', 'DanhSachMienController@hinhAnh');

@@ -31,5 +31,9 @@ class DatabaseSeeder extends Seeder
       		array('MaSV'=>'110117046','HoTen_SV'=>'Nguyễn Thị Thùy Dương', 'SDT_SV'=>'', 'Email_SV'=>'110117046@sv.tvu.edu.vn', "ChucVu_SV"=>"Lớp Phó", "ChuyenNganh"=>"Công Nghệ Phần Mềm", 'KhoaHoc'=>'2017-2021', 'NamSinh'=>'1999-01-01', 'NoiSinh'=>'Trà Vinh', "HeDaoTao"=>"Chính Quy", "MaLop"=>"DA17TT", "MaCV"=>"GV03"),
           array('MaSV'=>'110117035','HoTen_SV'=>'Nguyễn Minh Thư', 'SDT_SV'=>'01646286872', 'Email_SV'=>'110117035@sv.tvu.edu.vn', "ChucVu_SV"=>"Bí Thư", "ChuyenNganh"=>"Công Nghệ Phần Mềm", 'KhoaHoc'=>'2017-2021', 'NamSinh'=>'1999-11-10', 'NoiSinh'=>'Tiểu Cần - Trà Vinh', "HeDaoTao"=>"Chính Quy", "MaLop"=>"DA17TT", "MaCV"=>"GV03"),
       	]); 
+
+       DB::table('user')->insert([
+          array('username'=>'admin','password'=>'123456')
+        ]);
     }
 }

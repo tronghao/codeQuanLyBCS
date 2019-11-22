@@ -23,6 +23,17 @@
         </div>
         <div class="nav">
          <div class="dropdown">
+                      <button type="button" class="btn btn-primary dropdown-toggle ml-auto" data-toggle="dropdown">
+                       Thêm mới
+                     </button>
+                    <div class="dropdown-menu">
+                      <a class="dropdown-item" href="#" data-toggle="modal" data-target="#modal_BoMon">Theo bộ môn</a>
+                   
+          
+                      
+                      <a class="dropdown-item" href="#" data-toggle="modal" data-target="#modal_Khoa">Theo khóa</a>
+                      <a class="dropdown-item" href="#" data-toggle="modal" data-target="#modal_CoVan">Theo cố vấn</a>
+                    </div>
                      <button type="button" class="btn btn-primary dropdown-toggle ml-auto" data-toggle="dropdown">
                         Lọc danh sách
                      </button>
@@ -34,8 +45,8 @@
                       <a class="dropdown-item" href="#" data-toggle="modal" data-target="#modal_Khoa">Theo khóa</a>
                       <a class="dropdown-item" href="#" data-toggle="modal" data-target="#modal_CoVan">Theo cố vấn</a>
                     </div>
-          
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Đăng nhập</button>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Đổi Mật Khẩu</button>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Đăng Xuất</button>
                     <!-- Dang Nhap -->
 
                         <div class="modal fade" id="myModal">
@@ -53,7 +64,7 @@
                                     {{ csrf_field() }}
                                    <div class="form-group form-inline">
                                       <label for="" class="ml-5 mr-3">Tài Khoản</label>
-                                      <input type="text" name="tenDangNhap" class="form-control" />
+                                      <input type="text" name="tenTaiKhoan" class="form-control" />
                                    </div>
                                    <div class="form-group form-inline">
                                       <label for="" class="ml-5 mr-3">Mật Khẩu</label>

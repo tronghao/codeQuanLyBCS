@@ -1,4 +1,4 @@
-@extends('Guest.top')
+@extends('admin.top')
 
 @section('noidung')
 		@if(isset($info))

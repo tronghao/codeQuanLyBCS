@@ -13,9 +13,9 @@ class UserModel extends Model
     public function tonTaiUser($user, $pass)
     {
     	$kt = new UserModel();
-    	$kq = $kt->whereRaw('usename = ? and password = ?', [$user, $pass])->get()->count();
-    	if($kq!=0)
+    	$kq = $kt->whereRaw('username = ? and password = ?', [$user, $pass])->get()->count();
+    	if($kq>0)
     		return true;
     	else return false;
     }
-}}
+}
