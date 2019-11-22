@@ -26,8 +26,42 @@ body{
 
 .nav{
 	width:100%;
-	height:50;
-	background:#FC0;
+	height:40px;
+	background:#666;
 	display:inline-block;
 	float:right;
+	
 }
+.loc_danh_sach, .dang_nhap, .them_moi, .doi_mat_khau, .dang_xuat{
+	margin:5px 0;
+	
+}
+
+.them_moi{
+	margin-right:5px;
+}
+
+.loc_danh_sach{
+	margin-right:5px;
+}
+
+.doi_mat_khau{
+	margin-right:5px;
+}
+
+.dang_xuat{
+	margin-right: 10px;
+}
+
+.dang_nhap{
+	margin-right:5px;
+	
+}
+
+.content{
+	min-height: 75vh;
+	margin: 0 !important;
+}
+.footer{margin-top: 0 !important;
+color: white;
+padding: 10px 20px;}

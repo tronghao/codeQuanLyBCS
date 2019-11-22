@@ -17,23 +17,16 @@ class DanhSachModel extends Model
     	return $kq;
     }
 
-    public function findMaSV($maSV)
-    {
-    	$kt = new DanhSachModel();
-    	$kq = $kt->where('MaSV','=',$maSV)->get()->toArray();
-    	return $kq;
-    }
-
     public function locDanhSach($cheDoLoc, $giaTriLoc)
     {
         $truong = '';
-        if($cheDoLoc == "Bộ Môn")
+        if($cheDoLoc == "bomon")
             $truong = 'TenBoMon';
-        else if($cheDoLoc == "Lớp")
+        else if($cheDoLoc == "lop")
             $truong = 'TenLop';
-        else if($cheDoLoc == "Khóa Học")
+        else if($cheDoLoc == "khoahoc")
             $truong = 'KhoaHoc';
-        else if($cheDoLoc == "Cố Vấn Học Tập")
+        else if($cheDoLoc == "cvht")
             $truong = 'HoTen_CV';
         
         $kt = new DanhSachModel();

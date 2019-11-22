@@ -18,7 +18,8 @@ class UserController extends Controller
 		$kq = $kt->tonTaiUser($rq->tenDangNhap, $rq->matKhau);
 		if($kq == true)
 		{
-			return view('admin.trang-chu');
+			$rq->Session()->put('user','admin');
+			return redirect('admin/');
 		}
 		else
 		{

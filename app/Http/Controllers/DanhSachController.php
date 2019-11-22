@@ -18,29 +18,20 @@ class DanhSachController extends Controller
 
     }
 
-    public function xemThongTin($maSV)
+    public function locDanhSach($cheDo, $value)
     {
         $kt = new DanhSachModel();
-        $data['duLieu'] = $kt->findMaSV($maSV);
-        return view('xem-thong-tin')->with($data);
-    }
-
-    public function getCheDoLoc()
-    {
-        return view('guest.chon-che-do-loc');
-    }
-
-    public function getLocDanhSach(Request $rq)
-    {
-    	
-    }
-
-    public function locDanhSach($cheDoLoc, $giaTriLoc)
-    {
-        $kt = new DanhSachModel();
-    	$data['duLieu'] = $kt->locDanhSach($cheDoLoc, $giaTriLoc);
+        $data['duLieu'] = $kt->locDanhSach($cheDo, $value);
         return $data;
     }
+
+    public function getAllBoMon()
+    {
+        $kt = new DanhSachModel();
+        $data = $kt->getAllBoMon();
+        return $data;
+    }
+
 
     // public function thongKe()
     // {

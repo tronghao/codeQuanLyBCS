@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\DanhSachController;
+use App\BomonModel;
 
 class GuestController extends Controller
 {
@@ -13,73 +14,32 @@ class GuestController extends Controller
     {
         $ds = new DanhSachController();
         $data = $ds->getDanhSach();
+
+        $bm = new BomonModel(); 
+        $boMon = $bm->getAllBoMon();
+        // $khoaHoc = ;
+        // $coVan = ;
+        // $lop = ;
         if($id == null)
         {
-            return view('guest.trang-chu')->with(compact('data'));
+            return view('guest.trang-chu')->with(compact('data', 'boMon'));
         }
         else if($id == 1)
         {
             $info = "Tên tài khoản hoặc mật khẩu không đúng!";
-            return view('guest.trang-chu')->with(compact('info', 'data'));
+            return view('guest.trang-chu')->with(compact('info', 'data', 'boMon'));
         }
-    	
+        else if($id == 2)
+        {
+            $info = "Bạn cần đăng nhập!";
+            return view('guest.trang-chu')->with(compact('info', 'data', 'boMon'));
+        }
     }
 
-    public function locDanhSach(Request $rq)
+    public function locDanhSach($cheDo, Request $rq)
     {
     	$ds = new DanhSachController();
-    	$err = false;
-    	if($rq->cheDoLoc == "Bộ Môn")
-    	{
-    		if($rq->giaTriLoc == "--Chọn Bộ Môn--")
-    		{
-    			$err = true;
-    		}
-    		else
-    		{
-    			$data = $ds->locDanhSach($rq->cheDoLoc, $rq->giaTriLoc);
-    		}
-    	}
-    	else if($rq->cheDoLoc == "Lớp")
-    	{
-    		if($rq->giaTriLoc == "--Chọn Bộ Môn--")
-    		{
-    			$err = true;
-    		}
-    		else
-    		{
-    			$data = $ds->locDanhSach($rq->cheDoLoc, $rq->giaTriLoc);
-    		}
-    	}
-    	else if($rq->cheDoLoc == "Khóa Học")
-    	{
-    		if($rq->giaTriLoc == "--Chọn Bộ Môn--")
-    		{
-    			$err = true;
-    		}
-    		else
-    		{
-    			$data = $ds->locDanhSach($rq->cheDoLoc, $rq->giaTriLoc);
-    		}
-    	}else if($rq->cheDoLoc == "Cố Vấn Học Tập")
-    	{
-    		if($rq->giaTriLoc == "--Chọn Bộ Môn--")
-    		{
-    			$err = true;
-    		}
-    		else
-    		{
-    			$data = $ds->locDanhSach($rq->cheDoLoc, $rq->giaTriLoc);
-    		}
-    	}
-
-    	if($err == true)
-    	{
-    		return redirect('');
-    	}
-    	else
-    	{
-    		return view('guest.ket-qua-loc')->with($data);
-    	}
+        $dataLoc = $ds->locDanhSach($cheDo, $rq->value);
+    	return view('guest.trang-chu')->with(compact('dataLoc'));
     }
 }
