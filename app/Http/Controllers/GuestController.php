@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\DanhSachController;
 use App\BomonModel;
+use App\LopModel;
+use App\KhoaHocModel;
+use App\CoVanModel;
 
 class GuestController extends Controller
 {
@@ -17,22 +20,31 @@ class GuestController extends Controller
 
         $bm = new BomonModel(); 
         $boMon = $bm->getAllBoMon();
+
+        $lp = new LopModel(); 
+        $lop = $lp->getAllLop();
+
+        $kh = new KhoaHocModel(); 
+        $khoaHoc = $kh->getAllKhoaHoc();
+
+        $cv = new CoVanModel(); 
+        $coVan = $cv->getAllCoVan();
         // $khoaHoc = ;
         // $coVan = ;
         // $lop = ;
         if($id == null)
         {
-            return view('guest.trang-chu')->with(compact('data', 'boMon'));
+            return view('guest.trang-chu')->with(compact('data', 'boMon', 'lop', 'khoaHoc', 'coVan'));
         }
         else if($id == 1)
         {
             $info = "Tên tài khoản hoặc mật khẩu không đúng!";
-            return view('guest.trang-chu')->with(compact('info', 'data', 'boMon'));
+            return view('guest.trang-chu')->with(compact('info', 'data', 'boMon', 'lop', 'khoaHoc', 'coVan'));
         }
         else if($id == 2)
         {
             $info = "Bạn cần đăng nhập!";
-            return view('guest.trang-chu')->with(compact('info', 'data', 'boMon'));
+            return view('guest.trang-chu')->with(compact('info', 'data', 'boMon', 'lop', 'khoaHoc', 'coVan'));
         }
     }
 
@@ -40,6 +52,19 @@ class GuestController extends Controller
     {
     	$ds = new DanhSachController();
         $dataLoc = $ds->locDanhSach($cheDo, $rq->value);
-    	return view('guest.trang-chu')->with(compact('dataLoc'));
+
+        $bm = new BomonModel(); 
+        $boMon = $bm->getAllBoMon();
+
+        $lp = new LopModel(); 
+        $lop = $lp->getAllLop();
+
+        $kh = new KhoaHocModel(); 
+        $khoaHoc = $kh->getAllKhoaHoc();
+
+        $cv = new CoVanModel(); 
+        $coVan = $cv->getAllCoVan();
+
+    	return view('guest.trang-chu')->with(compact('dataLoc', 'boMon', 'lop', 'khoaHoc', 'coVan'));
     }
 }

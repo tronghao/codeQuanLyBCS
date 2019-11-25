@@ -16,6 +16,7 @@ class Lop extends Migration
         {
             $table->String('MaLop', 10)->unique();
             $table->String('TenLop', 30);
+            $table->String('EmailLop', 30);
             $table->String('MaBoMon', 10);
             $table->String('MaCV', 10);
             $table->foreign('MaBoMon')->references('MaBoMon')->on('bomon');

@@ -19,12 +19,18 @@ class UserController extends Controller
 		if($kq == true)
 		{
 			$rq->Session()->put('user','admin');
-			return redirect('admin/');
+			return redirect('admin/home');
 		}
 		else
 		{
 			//$info = 'Tên tài khoản hoặc mật khẩu không đúng!';
 			return redirect('/1');
 		}
+    }
+
+    public function DangXuat(request $rq)
+    {
+    	$rq->Session()->flush();
+    	return redirect('');
     }
 }

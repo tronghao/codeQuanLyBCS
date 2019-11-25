@@ -23,15 +23,10 @@ Route::post('loc-danh-sach/{chedo}', 'GuestController@locDanhSach');
 // Route::get('dang-nhap', 'DanhSachMienController@getDangNhap');
 // Route::post('dang-nhap', 'DanhSachMienController@postDangNhap');
 
-Route::group(['middleware' => 'admin', 'prefix'=>'admin'], function () {
-    Route::get('', 'AdminController@getTrangChu');
-    Route::post('them-thanh-vien', 'DanhSachMienController@postThemThanhVien');
-    Route::get('cuu/{id}', 'DanhSachMienController@cuu');
-    Route::get('sua-thanh-vien/{id}', 'DanhSachMienController@getSuaThanhVien');
-    Route::post('sua-thanh-vien/{id}', 'DanhSachMienController@postSuaThanhVien');
-    Route::get('them-hinh-anh', 'DanhSachMienController@getThemHinhAnh');
-    Route::post('them-hinh-anh', 'DanhSachMienController@postThemHinhAnh');
-    Route::get('dang-xuat', 'DanhSachMienController@dangXuat');
+Route::group(['prefix'=>'admin', 'middleware' => 'admin'], function () {
+    Route::get('home', 'AdminController@getTrangChu');
+    Route::post('loc-danh-sach/{chedo}', 'AdminController@locDanhSach');
+    Route::get('dang-xuat', 'UserController@dangXuat');
 });
 
 
