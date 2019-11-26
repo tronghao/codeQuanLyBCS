@@ -14,7 +14,7 @@ use App\CoVanModel;
 
 class AdminController extends Controller
 {
-    public function getTrangChu()
+    public function getTrangChu($id = null)
     {
     	$ds = new DanhSachController();
         $data = $ds->getDanhSach();
@@ -30,7 +30,20 @@ class AdminController extends Controller
 
         $cv = new CoVanModel(); 
         $coVan = $cv->getAllCoVan();
-        return view('admin.trang-chu')->with(compact('data', 'boMon', 'lop', 'khoaHoc', 'coVan'));
+
+        if($id == null)
+        {
+        	return view('admin.trang-chu')->with(compact('data', 'boMon', 'lop', 'khoaHoc', 'coVan'));
+        }else if($id == 1)
+        {
+        	$info = "Đổi mật khẩu thành công";
+        	return view('admin.trang-chu')->with(compact('data', 'boMon', 'lop', 'khoaHoc', 'coVan', 'info'));
+        }else if($id == 2)
+        {
+        	$info = "Đổi mật khẩu không thành công, mật khẩu cũ không khớp!";
+        	return view('admin.trang-chu')->with(compact('data', 'boMon', 'lop', 'khoaHoc', 'coVan', 'info'));
+        }
+        
     }
 
     public function locDanhSach($cheDo, Request $rq)

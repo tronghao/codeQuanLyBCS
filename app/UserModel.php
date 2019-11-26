@@ -18,4 +18,11 @@ class UserModel extends Model
     		return true;
     	else return false;
     }
+
+    public function updateMatKhau($user, $pass)
+    {
+        $kt = UserModel::where('username', '=', $user)->first();
+        $kt->password = $pass;
+        $kt->save();
+    }
 }

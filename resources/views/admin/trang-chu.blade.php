@@ -67,15 +67,15 @@
         <div class="modal-body">
           <div class="row">
             <div class="col-md-10 offset-md-1">
-              <form class="box" action="{{ asset('dang-nhap') }}" method="post">
+              <form class="box" action="{{ asset('admin/doi-mat-khau') }}" method="post">
                 {{ csrf_field() }}
                 <div class="form-group form-inline">
                   <label for="" class="ml-5 mr-3">Mật khẩu cũ</label>
-                  <input type="password" name="tenDangNhap" class="form-control" />
+                  <input type="password" name="matKhauCu" class="form-control" />
                 </div>
                 <div class="form-group form-inline">
                   <label for="" class="ml-5 mr-2">Mật khẩu mới</label>
-                  <input type="password" name="matKhau" class="form-control" />
+                  <input type="password" name="matKhauMoi" class="form-control" />
                 </div>
                 <div class="row"> 
                   <div class="col-md-7 offset-md-4">

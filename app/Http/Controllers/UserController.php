@@ -28,6 +28,21 @@ class UserController extends Controller
 		}
     }
 
+    public function doiMatKhau(request $rq)
+    {
+    	$kt = new UserModel();
+    	if($kt->tonTaiUser($rq->session()->get('user'), $rq->matKhauCu))
+    	{
+    		//update mat khau
+    		$kt->updateMatKhau($rq->session()->get('user'), $rq->matKhauMoi);
+    		return redirect('admin/home/1');
+    	}
+    	else
+    	{
+    		return redirect('admin/home/2');
+    	}
+    }
+
     public function DangXuat(request $rq)
     {
     	$rq->Session()->flush();
