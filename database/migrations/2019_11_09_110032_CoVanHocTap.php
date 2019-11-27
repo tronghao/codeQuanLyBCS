@@ -19,7 +19,7 @@ class CoVanHocTap extends Migration
             $table->String('SDT_CV', 10);
             $table->String('Email_CV', 30);
             $table->String('MaBoMon', 10);
-            $table->foreign('MaBoMon')->references('MaBoMon')->on('bomon');
+            $table->foreign('MaBoMon')->references('MaBoMon')->on('bomon')->onDelete('cascade');;
         });
     }
 

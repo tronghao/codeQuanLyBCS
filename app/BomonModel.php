@@ -7,14 +7,16 @@ use Illuminate\Database\Eloquent\Model;
 class BomonModel extends Model
 {
     protected $table = 'bomon';
-    protected $fillable = ['id'];
+    protected $fillable = ['MaBoMon','TenBoMon'];
     public $timestamps = false;
+    protected $primaryKey = "MaBoMon";
+    protected $keyType = 'string';
 
     public function getAllBoMon()
     {
-    	$kt = new BomonModel();
-    	$kq = $kt->select('TenBoMon')->get()->toArray();
-    	return $kq;
+        $kt = new BomonModel();
+        $kq = $kt->get()->toArray();
+        return $kq;
     }
 
     public function tonTai($maBm)
@@ -47,5 +49,18 @@ class BomonModel extends Model
     	$kt = new BomonModel();
     	$kq = $kt->where('TenBoMon', '=', $name)->get()->toArray();
     	return $kq[0]['MaBoMon'];
+    }
+
+    public function xoaBoMon($maBM)
+    {
+        $kt = new BomonModel();
+        $kt->where('MaBoMon', '=', $maBM)->delete();
+    }
+
+    public function suaBoMon($maBM, $rq)
+    {
+        $kt = BomonModel::where('MaBoMon', '=', $maBM)->first();
+        $kt->TenBoMon = $rq->tenBoMon;
+        $kt->save();
     }
 }

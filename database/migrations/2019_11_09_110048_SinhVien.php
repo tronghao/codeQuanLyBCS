@@ -21,13 +21,13 @@ class SinhVien extends Migration
             $table->String('ChucVu_SV', 10);
             $table->String('ChuyenNganh', 40);
             $table->String('KhoaHoc', 9);
-            $table->DateTime('NamSinh');
+            $table->Date('NamSinh');
             $table->String('NoiSinh', 50);
             $table->String('HeDaoTao', 9);
             $table->String('MaLop', 10);
             $table->String('MaCV', 10);
-            $table->foreign('MaLop')->references('MaLop')->on('lop');
-            $table->foreign('MaCV')->references('MaCV')->on('covanhoctap');
+            $table->foreign('MaLop')->references('MaLop')->on('lop')->onDelete('cascade');
+            $table->foreign('MaCV')->references('MaCV')->on('covanhoctap')->onDelete('cascade');
         });
     }
 

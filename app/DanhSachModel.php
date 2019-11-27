@@ -51,9 +51,11 @@ class DanhSachModel extends Model
             $kq = $lp->themCoVan($rq);
         }else if($cheDo == 'sinhvien')
         {
-
+            $sv = new SinhVienModel();
+            $kq = $sv->themSinhVien($rq);
         }
 
         return $kq;
     }
+
 }

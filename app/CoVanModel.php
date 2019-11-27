@@ -10,6 +10,8 @@ class CoVanModel extends Model
     protected $table = 'CoVanHocTap';
     protected $fillable = ['id'];
     public $timestamps = false;
+    protected $primaryKey = "MaCV";
+    protected $keyType = 'string';
 
     public function getAllCoVan()
     {
@@ -52,5 +54,29 @@ class CoVanModel extends Model
 				$kt->save();
 				return true;
 			}
+    }
+
+    public function getAllCoVanAndInfo()
+    {
+    	$kt = new CoVanModel();
+    	$kq = $kt->join('bomon', 'bomon.MaBoMon', '=', 'covanhoctap.MaBoMon')->get()->toArray();
+    	return $kq;
+    }
+
+    public function xoaCoVan($maCV)
+    {
+        $kt = new CoVanModel();
+        $kt->where('MaCV', '=', $maCV)->delete();
+    }
+
+    public function suaCoVan($maCV, $rq)
+    {
+        $bm = new BomonModel();
+        $kt = CoVanModel::where('MaCV', '=', $maCV)->first();
+        $kt->HoTen_CV = $rq->hoTenCV;
+		$kt->Email_CV = $rq->emailCV;
+		$kt->SDT_CV = $rq->sdtCV;
+		$kt->MaBoMon = $bm->getMaBoMonQuaName($rq->tenBoMon);
+		$kt->save();
     }
 }

@@ -19,8 +19,8 @@ class Lop extends Migration
             $table->String('EmailLop', 30);
             $table->String('MaBoMon', 10);
             $table->String('MaCV', 10);
-            $table->foreign('MaBoMon')->references('MaBoMon')->on('bomon');
-            $table->foreign('MaCV')->references('MaCV')->on('covanhoctap');
+            $table->foreign('MaBoMon')->references('MaBoMon')->on('bomon')->onDelete('cascade');;
+            $table->foreign('MaCV')->references('MaCV')->on('covanhoctap')->onDelete('cascade');;
         });
     }
 

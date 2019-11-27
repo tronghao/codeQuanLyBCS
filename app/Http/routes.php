@@ -25,9 +25,29 @@ Route::post('loc-danh-sach/{chedo}', 'GuestController@locDanhSach');
 
 Route::group(['prefix'=>'admin', 'middleware' => 'admin'], function () {
     Route::get('home/{id?}', 'AdminController@getTrangChu');
+
     Route::post('loc-danh-sach/{chedo}', 'AdminController@locDanhSach');
+
     Route::post('them/{cheDo?}', 'AdminController@themDuLieu');
+
+    Route::get('xoa-sinh-vien/{maSV}', 'AdminController@xoaSinhVien');
+    Route::post('sua/sinh-vien/{maSV}', 'AdminController@suaSinhVien');
+
+    Route::get('xoa-bo-mon/{maBoMon}', 'AdminController@xoaBoMon');
+    Route::post('sua/bo-mon/{maBoMon}', 'AdminController@suaBoMon');
+
+    Route::get('xoa-lop/{maLop}', 'AdminController@xoaLop');
+    Route::post('sua/lop/{maLop}', 'AdminController@suaLop');
+
+    Route::get('xoa-co-van/{maCV}', 'AdminController@xoaCoVan');
+    Route::post('sua/co-van/{maCV}', 'AdminController@suaCoVan');
+
+    Route::get('quan-ly/bomon/{id?}', 'AdminController@quanLyBoMon');
+    Route::get('quan-ly/lop/{id?}', 'AdminController@quanLyLop');
+    Route::get('quan-ly/cvht/{id?}', 'AdminController@quanLyCoVan');
+
     Route::post('doi-mat-khau', 'UserController@doiMatKhau');
+
     Route::get('dang-xuat', 'UserController@dangXuat');
 });
 

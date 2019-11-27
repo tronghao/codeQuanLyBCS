@@ -90,7 +90,7 @@
     @endif
     @if(isset($data))
       <div class="table-responsive">
-        <h4 style="padding: 5px">Danh Sách Ban Cán Sự Khoa Kỹ Thuật Và Công Nghệ</h4>
+        <h4 style="padding: 5px">Danh Sách Ban Cán Lớp Sự Khoa Kỹ Thuật Và Công Nghệ</h4>
         <table class="table table-bordered table-sm">
             <thead>
               <tr style="background: #E95A13; color: white;">
@@ -102,7 +102,7 @@
                 <th class="text-center">SDT</th>
                 <th class="text-center">Email lớp </th>
                 <th class="text-center">Tên cố vấn </th>
-                <th class="text-center">Chi Tiết</th>
+                <th class="text-center"></th>
               </tr>
             </thead>
             <tbody>
@@ -118,7 +118,7 @@
               <td class="text-center"> {{ $value['SDT_SV'] }} </td>
               <td> {{ $value['EmailLop'] }} </td>
               <td> {{ $value['HoTen_CV'] }} </td>
-              <td> <button type="button" class="btn btn-primary" data-toggle="modal" data-target="{{ '#modal_chitiet_'.$value['MaSV'] }}"> Chi Tiết </button> </td>
+              <td class="text-center"> <button type="button" class="btn btn-primary" data-toggle="modal" data-target="{{ '#modal_chitiet_'.$value['MaSV'] }}"> Chi Tiết </button> </td>
               <!---------------MODAL CHI TIẾT---------------->
 
                 <div class="modal" id="{{ 'modal_chitiet_'.$value['MaSV'] }}">
@@ -176,7 +176,7 @@
                 <th class="text-center">SDT</th>
                 <th class="text-center">Email lớp </th>
                 <th class="text-center">Tên cố vấn </th>
-                <th class="text-center">Chi Tiết</th>
+                <th class="text-center"></th>
               </tr>
             </thead>
             <tbody>
@@ -192,7 +192,7 @@
               <td class="text-center"> {{ $value['SDT_SV'] }} </td>
               <td> {{ $value['EmailLop'] }} </td>
               <td> {{ $value['HoTen_CV'] }} </td>
-              <td> <button type="button" class="btn btn-primary" data-toggle="modal" data-target="{{ '#modal_chitiet_'.$value['MaSV'] }}"> Chi Tiết </button> </td>
+              <td class="text-center"> <button type="button" class="btn btn-primary" data-toggle="modal" data-target="{{ '#modal_chitiet_'.$value['MaSV'] }}"> Chi Tiết </button> </td>
               <!---------------MODAL CHI TIẾT---------------->
 
                 <div class="modal" id="{{ 'modal_chitiet_'.$value['MaSV'] }}">

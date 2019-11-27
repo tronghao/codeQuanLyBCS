@@ -9,14 +9,23 @@ use App\CoVanModel;
 class LopModel extends Model
 {
     protected $table = 'lop';
-    protected $fillable = ['id'];
+    protected $fillable = ['MaLop'];
     public $timestamps = false;
+    protected $primaryKey = "MaLop";
+    protected $keyType = "string";
 
     public function getAllLop()
     {
     	$kt = new LopModel();
     	$kq = $kt->select('TenLop')->get()->toArray();
     	return $kq;
+    }
+
+    public function getAllLopAndInfo()
+    {
+        $kt = new LopModel();
+        $kq = $kt->join('bomon', 'bomon.MaBoMon', '=', 'lop.MaBoMon')->join('covanhoctap', 'covanhoctap.MaCV', '=', 'lop.MaCV')->get()->toArray();
+        return $kq;
     }
 
     public function tonTai($maLop)
@@ -47,5 +56,30 @@ class LopModel extends Model
 				$kt->save();
 				return true;
 			}
+    }
+
+    public function getMaLopQuaName($name)
+    {
+    	$kt = new LopModel();
+    	$kq = $kt->where('TenLop', '=', $name)->get()->toArray();
+    	return $kq[0]['MaLop'];
+    }
+
+    public function xoaLop($maLop)
+    {
+        $kt = new LopModel();
+        $kt->where('MaLop', '=', $maLop)->delete();
+    }
+
+    public function suaLop($maLop, $rq)
+    {
+        $bm = new BomonModel();
+        $cv = new CoVanModel();
+        $kt = LopModel::where('MaLop', '=', $maLop)->first();
+        $kt->TenLop = $rq->tenLop;
+        $kt->EmailLop = $rq->emailLop;
+        $kt->MaBoMon = $bm->getMaBoMonQuaName($rq->tenBoMon);
+        $kt->MaCV = $cv->getMaCoVanQuaName($rq->tenCoVan);
+        $kt->save();
     }
 }
