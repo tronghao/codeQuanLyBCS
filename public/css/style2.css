@@ -32,7 +32,7 @@ body{
 	float:right;
 	
 }
-.loc_danh_sach, .dang_nhap, .them_moi, .doi_mat_khau, .dang_xuat{
+.loc_danh_sach_guest,.loc_danh_sach, .dang_nhap, .them_moi, .doi_mat_khau, .dang_xuat, .trang_chu, .quan_ly, .trang_chu_guest{
 	margin:5px 0;
 	
 }
@@ -40,9 +40,22 @@ body{
 .them_moi{
 	margin-right:5px;
 }
+.trang_chu{
+	margin-right:5px;
+}
 
+.trang_chu_guest{
+	margin-right:5px;
+}
+
+.quan_ly{
+	margin-right: 5px;
+}
 .loc_danh_sach{
 	margin-right:5px;
+}
+.loc_danh_sach_guest{
+	margin-right:0px;
 }
 
 .doi_mat_khau{
@@ -54,7 +67,7 @@ body{
 }
 
 .dang_nhap{
-	margin-right:5px;
+	margin-right: 10px;
 	
 }
 

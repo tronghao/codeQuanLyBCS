@@ -26,7 +26,7 @@
     </div>
     <div class="nav">
         <div class="dropdown">
-            <button type="button" class="btn btn-sm btn-primary dropdown-toggle ml-auto loc_danh_sach" data-toggle=     "dropdown">Lọc danh sách</button>
+            <button type="button" class="btn btn-sm btn-primary dropdown-toggle ml-auto loc_danh_sach_guest" data-toggle=     "dropdown">Lọc danh sách</button>
             <div class="dropdown-menu ">
                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#modal_BoMon">Theo bộ môn</a>
                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#modal_Khoa">Theo khóa</a>
@@ -72,6 +72,10 @@
                             </div>
                           </div>            
                </div>
+
+          <div class="dropdown">
+            <a href="{{ asset('')}}"><button type="button" class="btn btn-sm btn-primary trang_chu_guest" >Trang chủ</button></a>
+          </div>
 </div>
 
 </div>

@@ -43,6 +43,16 @@ class AdminController extends Controller
         	$info = "Đổi mật khẩu không thành công, mật khẩu cũ không khớp!";
         	return view('admin.trang-chu')->with(compact('data', 'boMon', 'lop', 'khoaHoc', 'coVan', 'info'));
         }
+        else if($id == 3)
+        {
+            $info = "Thêm thành công!";
+            return view('admin.trang-chu')->with(compact('data', 'boMon', 'lop', 'khoaHoc', 'coVan', 'info'));
+        }
+        else if($id == 4)
+        {
+            $info = "Lỗi thêm dữ liệu, dữ liệu bị trùng!";
+            return view('admin.trang-chu')->with(compact('data', 'boMon', 'lop', 'khoaHoc', 'coVan', 'info'));
+        }
         
     }
 
@@ -64,5 +74,19 @@ class AdminController extends Controller
         $coVan = $cv->getAllCoVan();
 
     	return view('admin.trang-chu')->with(compact('dataLoc', 'boMon', 'lop', 'khoaHoc', 'coVan'));
+    }
+
+    public function themDuLieu($cheDo, Request $rq)
+    {
+        $ds = new DanhSachController();
+        $kq = $ds->themDuLieu($cheDo, $rq);
+        if($kq == true)
+        {
+            return redirect('admin/home/3');
+        }
+        else
+        {
+            return redirect('admin/home/4');
+        }
     }
 }

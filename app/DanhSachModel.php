@@ -33,4 +33,27 @@ class DanhSachModel extends Model
         $kq = $kt->join('lop', 'lop.MaLop', '=',  'sinhvien.MaLop')->join('covanhoctap', 'covanhoctap.MaCV', '=', 'sinhvien.MaCV')->join('bomon', 'bomon.MaBoMon', '=', 'lop.MaBoMon')->where($truong , '=', $giaTriLoc)->get()->toArray();
         return $kq;
     }
+
+    public function themDuLieu($cheDo, $rq)
+    {
+        if($cheDo == "bomon")
+        {
+            $bm = new BomonModel();
+            $kq = $bm->themBoMon($rq);
+        }
+        else if($cheDo == 'lop')
+        {
+            $lp = new LopModel();
+            $kq = $lp->themLop($rq);
+        }else if($cheDo == 'cvht')
+        {
+            $lp = new CoVanModel();
+            $kq = $lp->themCoVan($rq);
+        }else if($cheDo == 'sinhvien')
+        {
+
+        }
+
+        return $kq;
+    }
 }

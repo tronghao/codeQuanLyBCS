@@ -51,6 +51,20 @@
       </div>
     </div>
 
+  <div class="dropdown">
+      <button type="button" class="btn btn-sm btn-primary dropdown-toggle ml-auto quan_ly" data-toggle= "dropdown">Quản lý</button>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#modal_quan_ly_BoMon">Bộ môn</a>
+        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#modal_quan_ly_Lop">Lớp</a>
+        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#modal_quan_ly_CoVan">Cố vấn học tập</a>
+
+      </div>
+    </div>
+
+    <div class="dropdown">
+      <a href="{{ asset('admin/home')}}"><button type="button" class="btn btn-sm btn-primary trang_chu" >Trang chủ</button></a>
+    </div>
+
 
 
 
@@ -115,7 +129,8 @@
                 <th class="text-center">SDT</th>
                 <th class="text-center">Email lớp </th>
                 <th class="text-center">Tên cố vấn </th>
-                <th class="text-center">Chi Tiết</th>
+                <th class="text-center"></th>
+                <th class="text-center"></th>
               </tr>
             </thead>
             <tbody>
@@ -131,7 +146,8 @@
               <td class="text-center"> {{ $value['SDT_SV'] }} </td>
               <td> {{ $value['EmailLop'] }} </td>
               <td> {{ $value['HoTen_CV'] }} </td>
-              <td> <button type="button" class="btn btn-primary" data-toggle="modal" data-target="{{ '#modal_chitiet_'.$value['MaSV'] }}"> Chi Tiết </button> </td>
+              <td class="text-center"> <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal_xoa" style="background-color: red; border: 0;"> Xóa </button> </td>
+              <td class="text-center"> <button type="button" class="btn btn-primary" data-toggle="modal" data-target="{{ '#modal_chitiet_'.$value['MaSV'] }}"> Chi Tiết </button> </td>
               <!---------------MODAL CHI TIẾT---------------->
 
                 <div class="modal" id="{{ 'modal_chitiet_'.$value['MaSV'] }}">
@@ -189,7 +205,8 @@
                 <th class="text-center">SDT</th>
                 <th class="text-center">Email lớp </th>
                 <th class="text-center">Tên cố vấn </th>
-                <th class="text-center">Chi Tiết</th>
+                <th class="text-center"></th>
+                <th class="text-center"></th>
               </tr>
             </thead>
             <tbody>
@@ -205,6 +222,7 @@
               <td class="text-center"> {{ $value['SDT_SV'] }} </td>
               <td> {{ $value['EmailLop'] }} </td>
               <td> {{ $value['HoTen_CV'] }} </td>
+              <td class="text-center"> <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal_xoa" style="background-color: red; border: 0;"> Xóa </button> </td>
               <td> <button type="button" class="btn btn-primary" data-toggle="modal" data-target="{{ '#modal_chitiet_'.$value['MaSV'] }}"> Chi Tiết </button> </td>
               <!---------------MODAL CHI TIẾT---------------->
 
@@ -252,7 +270,334 @@
 </div>
 
 
+<!-----------------THÊM SINH VIÊN---------------->
+<div class="modal fade" id="modal_them_moi_SV">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
 
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Thêm sinh viên</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <div class="container">
+            <form>
+                  <form>
+                    <div class="input-group mb-3 input-group-sm">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">Mã số:</span>
+                      </div>
+                      <input type="text" class="form-control">
+                    </div>
+                  </form>
+                  <form>
+                    <div class="input-group mb-3 input-group-sm">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">Họ tên:</span>
+                      </div>
+                      <input type="text" class="form-control">
+                    </div>
+                  </form>
+                  <form>
+                    <div class="input-group mb-3 input-group-sm">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">Số điện thoại:</span>
+                      </div>
+                      <input type="text" class="form-control">
+                    </div>
+                  </form>
+                  <form>
+                    <div class="input-group mb-3 input-group-sm">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">Email:</span>
+                      </div>
+                      <input type="text" class="form-control">
+                    </div>
+                  </form>
+                  <form>
+                    <div class="input-group mb-3 input-group-sm">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">Chức vụ:</span>
+                      </div>
+                      <input type="text" class="form-control">
+                    </div>
+                  </form>
+                  <form>
+                    <div class="input-group mb-3 input-group-sm">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">Chuyên nghành:</span>
+                      </div>
+                      <input type="text" class="form-control">
+                    </div>
+                  </form>
+                  <form>
+                    <div class="input-group mb-3 input-group-sm">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">Khóa học:</span>
+                      </div>
+                      <input type="text" class="form-control">
+                    </div>
+                  </form>
+                  <form>
+                    <div class="input-group mb-3 input-group-sm">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">Năm sinh:</span>
+                      </div>
+                      <input type="text" class="form-control">
+                    </div>
+                  </form>
+                  <form>
+                    <div class="input-group mb-3 input-group-sm">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">Nơi sinh:</span>
+                      </div>
+                      <input type="text" class="form-control">
+                    </div>
+                  </form>
+                  <form>
+                    <div class="input-group mb-3 input-group-sm">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">Hệ đào tạo:</span>
+                      </div>
+                      <input type="text" class="form-control">
+                    </div>
+                  </form>
+                   <form>
+                    <div class="input-group mb-3 input-group-sm">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">Mã lớp:</span>
+                      </div>
+                       <form>
+                        <select name="cars" class="custom-select">
+                          <option selected></option>
+                          <option value="volvo"></option>
+                          <option value="fiat"></option>
+                          <option value="audi"></option>
+                        </select>
+                      </form>
+                    </div>
+                  </form>
+                   <form>
+                    <div class="input-group mb-3 input-group-sm">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">Mã cố vấn:</span>
+                      </div>
+                       <form>
+                        <select name="cars" class="custom-select">
+                          <option selected></option>
+                          <option value="volvo"></option>
+                          <option value="fiat"></option>
+                          <option value="audi"></option>
+                        </select>
+                      </form>
+                    </div>
+                  </form>
+                </div>
+              </div>
+
+              <!-- Modal footer -->
+              <div class="modal-footer">
+                <button type="submit" class="btn btn-info ml-auto">Thêm</button>
+              </div> 
+          </form> 
+    </div>
+  </div>
+</div>
+
+<!--------------------------------------------------->
+<!-----------------THÊM CỐ VẤN HỌC TẬP---------------->
+<div class="modal fade" id="modal_them_moi_CoVan">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Thêm cố vấn</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <div class="container">
+          <form action="{{ asset('admin/them/cvht') }}" method="post">
+              {{ csrf_field() }}
+                <div class="input-group mb-3 input-group-sm">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">Mã cố vấn:</span>
+                  </div>
+                  <input type="text" class="form-control" name="maCV">
+                </div>
+
+                <div class="input-group mb-3 input-group-sm">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">Họ tên:</span>
+                  </div>
+                  <input type="text" class="form-control" name="hoTenCV">
+                </div>
+
+                <div class="input-group mb-3 input-group-sm">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">Số điện thoại:</span>
+                  </div>
+                  <input type="text" class="form-control" name="sdtCV">
+                </div>
+
+                <div class="input-group mb-3 input-group-sm">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">Email:</span>
+                  </div>
+                  <input type="text" class="form-control" name="emailCV">
+                </div>
+
+                <div class="input-group mb-3 input-group-sm">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">Mã bộ môn:</span>
+                  </div>
+
+                       <select class="custom-select" name="tenBoMon">
+                        @foreach($boMon as $value)
+                              <option> {{ $value["TenBoMon"] }} </option>
+                        @endforeach
+                      </select>
+
+                </div>
+              
+
+            </div>
+          </div>
+
+          <!-- Modal footer -->
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-info ml-auto">Thêm</button>
+          </div>  
+       </form>   
+  </div>
+</div>
+</div>
+
+<!--------------------------------------------------->
+
+<!-----------------THÊM LỚP---------------->
+<div class="modal fade" id="modal_them_moi_Lop">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Thêm lớp</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <div class="container">
+            <form action="{{ asset('admin/them/lop') }}" method="post">
+              {{ csrf_field() }}
+                <div class="input-group mb-3 input-group-sm">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">Mã lớp:</span>
+                  </div>
+                  <input type="text" class="form-control" name="maLop">
+                </div>
+
+                <div class="input-group mb-3 input-group-sm">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">Tên lớp:</span>
+                  </div>
+                  <input type="text" class="form-control" name="tenLop">
+                </div>
+
+                <div class="input-group mb-3 input-group-sm">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">Email lớp:</span>
+                  </div>
+                  <input type="text" class="form-control" name="emailLop">
+                </div>
+
+                <div class="input-group mb-3 input-group-sm">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">Tên bộ môn:</span>
+                  </div>
+
+                      <select class="custom-select" name="tenBoMon">
+                        @foreach($boMon as $value)
+                              <option> {{ $value["TenBoMon"] }} </option>
+                        @endforeach
+                      </select>
+
+                </div>
+
+                <div class="input-group mb-3 input-group-sm">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">Tên cố vấn:</span>
+                  </div>
+
+                      <select class="custom-select" name="tenCoVan">
+                        @foreach($coVan as $value)
+                              <option> {{ $value["HoTen_CV"] }} </option>
+                        @endforeach
+                      </select>
+
+                </div>
+
+           
+      </div>
+    </div>
+
+    <!-- Modal footer -->
+    <div class="modal-footer">
+      <button type="submit" class="btn btn-info ml-auto">Thêm</button>
+    </div>  
+  </form>
+  </div>
+</div>
+</div>
+
+<!-----------------THÊM BỘ MÔN---------------->
+<div class="modal fade" id="modal_them_moi_BoMon">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Thêm bộ môn</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <div class="container">
+         
+          <form action="{{ asset('admin/them/bomon') }}" method="post">
+            {{ csrf_field() }}
+            <div class="input-group mb-3 input-group-sm">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">Mã bộ môn:</span>
+                </div>
+                <input type="text" class="form-control" name="maBoMon">
+            </div>
+
+            <div class="input-group mb-3 input-group-sm">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">Tên bộ môn:</span>
+                </div>
+                <input type="text" class="form-control" name="tenBoMon">
+            </div>
+          
+        </div>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-info ml-auto">Thêm</button>
+      </div>
+    </form>    
+    </div>
+  </div>
+</div>
 
 <!-----------------LỌC THEO BỘ MÔN---------------->
   <div class="modal" id="modal_BoMon">

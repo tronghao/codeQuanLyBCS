@@ -26,6 +26,7 @@ Route::post('loc-danh-sach/{chedo}', 'GuestController@locDanhSach');
 Route::group(['prefix'=>'admin', 'middleware' => 'admin'], function () {
     Route::get('home/{id?}', 'AdminController@getTrangChu');
     Route::post('loc-danh-sach/{chedo}', 'AdminController@locDanhSach');
+    Route::post('them/{cheDo?}', 'AdminController@themDuLieu');
     Route::post('doi-mat-khau', 'UserController@doiMatKhau');
     Route::get('dang-xuat', 'UserController@dangXuat');
 });

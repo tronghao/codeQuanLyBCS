@@ -32,6 +32,12 @@ class DanhSachController extends Controller
         return $data;
     }
 
+    public function themDuLieu($cheDo, Request $rq)
+    {
+        $kt = new DanhSachModel();
+        $kq = $kt->themDuLieu($cheDo, $rq);
+        return $kq;
+    }
 
     // public function thongKe()
     // {
