@@ -15,7 +15,7 @@ class Lop extends Migration
         Schema::create('lop', function(Blueprint $table)
         {
             $table->String('MaLop', 10)->unique();
-            $table->String('TenLop', 30);
+            $table->String('TenLop', 70);
             $table->String('EmailLop', 30);
             $table->String('MaBoMon', 10);
             $table->String('MaCV', 10);
