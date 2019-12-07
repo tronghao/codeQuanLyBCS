@@ -47,9 +47,7 @@ class DatabaseSeeder extends Seeder
           array('MaCV'=>'00238','HoTen_CV'=>'Nguyễn Đức Hiệu','SDT_CV'=>'0908288380','Email_CV'=>' ndhieu@tvu.edu.vn','MaBoMon'=>'BM03'),
           array('MaCV'=>'14190','HoTen_CV'=>'Phạm Tấn Hưng','SDT_CV'=>'0907839644','Email_CV'=>' pthung@tvu.edu.vn','MaBoMon'=>'BM03'),
           array('MaCV'=>'14230','HoTen_CV'=>'Cao Phương Thảo','SDT_CV'=>'0766719277','Email_CV'=>'cpthao@tvu.edu.vn ','MaBoMon'=>'BM03'),
-          array('MaCV'=>'14210','HoTen_CV'=>'Triệu Quốc Huy','SDT_CV'=>'0918439231','Email_CV'=>'tqhuy@tvu.edu.vn','MaBoMon'=>'BM03'),
           array('MaCV'=>'14191','HoTen_CV'=>'Bùi Thị Thu Thủy','SDT_CV'=>'0917817219','Email_CV'=>'thuybui@tvu.edu.vn','MaBoMon'=>'BM03'),
-          array('MaCV'=>'14211','HoTen_CV'=>'Triệu Quốc Huy','SDT_CV'=>'0918439231','Email_CV'=>'tqhuy@tvu.edu.vn','MaBoMon'=>'BM03'),
           array('MaCV'=>'14221','HoTen_CV'=>'Trần Văn Điền','SDT_CV'=>'','Email_CV'=>'','MaBoMon'=>'BM04'),
           array('MaCV'=>'00270','HoTen_CV'=>'Huỳnh Thanh Bảnh','SDT_CV'=>'0944311311','Email_CV'=>' banhhuynh@tvu.edu.vn','MaBoMon'=>'BM04'),
           array('MaCV'=>'12711','HoTen_CV'=>'Nguyễn Vũ Lực','SDT_CV'=>'0918677454','Email_CV'=>' nguyenvuluc@tvu.edu.vn','MaBoMon'=>'BM04'),
@@ -58,7 +56,6 @@ class DatabaseSeeder extends Seeder
           array('MaCV'=>'14223','HoTen_CV'=>'Đặng Hoàng Vũ','SDT_CV'=>'0367985935','Email_CV'=>'hoangvuck@tvu.edu.vn ','MaBoMon'=>'BM04'),
           array('MaCV'=>'14259','HoTen_CV'=>'Thạch Ngọc Phúc','SDT_CV'=>'0973475358','Email_CV'=>' tnphuc@tvu.edu.vn','MaBoMon'=>'BM04'),
           array('MaCV'=>'00268','HoTen_CV'=>'Trương Văn Mến','SDT_CV'=>'','Email_CV'=>' tvmen@tvu.edu.vn','MaBoMon'=>'BM04'),
-          array('MaCV'=>'00271','HoTen_CV'=>'Huỳnh Thanh Bảnh','SDT_CV'=>'0944311311','Email_CV'=>' banhhuynh@tvu.edu.vn','MaBoMon'=>'BM04'),
           array('MaCV'=>'00269','HoTen_CV'=>'Dương Minh Hùng','SDT_CV'=>'0985959190','Email_CV'=>'duongminhhung1806@tvu.edu.vn','MaBoMon'=>'BM04'),
           array('MaCV'=>'00274','HoTen_CV'=>'Tăng Tấn Minh','SDT_CV'=>'0939.303.250','Email_CV'=>' tanminh@tvu.edu.vn','MaBoMon'=>'BM04'),
         ]);
