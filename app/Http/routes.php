@@ -17,6 +17,7 @@ Route::get('d', function()
 Route::get('/{cd?}', 'GuestController@getTrangChu');
 Route::post('dang-nhap', 'UserController@dangNhap');
 Route::post('loc-danh-sach/{chedo}', 'GuestController@locDanhSach');
+Route::get('xuat-excel/{nd}', 'DanhSachController@xuatExcel');
 // Route::get('thong-ke', 'DanhSachMienController@thongKe');
 // Route::get('xem-danh-sach-theo-khoa/{khoa}', 'DanhSachMienController@xemTheoKhoa');
 // Route::get('hinh-anh', 'DanhSachMienController@hinhAnh');

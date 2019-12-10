@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\DanhSachModel;
-
+use Excel;
 
 class DanhSachController extends Controller
 {
@@ -39,159 +39,82 @@ class DanhSachController extends Controller
         return $kq;
     }
 
-    // public function thongKe()
-    // {
-    // 	$kt = new DanhSachMienModel();
-    // 	$data['duLieu'] = $kt->thongKe();
-    // 	return view('thong-ke')->with($data);
-    // }
+    public function xuatExcel($nd)
+    {
+        if($nd=="sinhvien")
+        {
+            $this->xuatExcelSinhVien();
+            //return redirect()->back();
+        }
+    }
 
-    // public function xemTheoKhoa($khoa)
-    // {
-    // 	$kt = new DanhSachMienModel();
-    // 	$data['duLieu2'] = $kt->locTheoKhoaHoc($khoa);
-    // 	return view('thong-ke')->with($data);
-    // }
+    public function xuatExcelSinhVien()
+    {
+        // if($nd == "sinhvien")
+        // {
 
-    // public function hinhAnh()
-    // {
-    // 	$data['duLieu'] = hinhAnhModel::all();
-    // 	return view('hinh-anh')->with($data);
-    // }
+        // }
+        // else if($nd == "bomon")
+        // {
+            // $kt = new BomonModel(); 
+            // $data= $kt->getAllBoMon();
+             $ext = "xls";
+    
+            Excel::create('Bo_Mon', function($excel) {
+                $excel->sheet('bomon', function($sheet) {
+                    $sheet->fromArray(array(
+                        array('data1', 'data2'),
+                        array('data3', 'data4')
+                    ));
+                });
+            })->download($ext);
+            // include "lib/PHPExcel/Classes/PHPExcel.php";
+            // $data = [
+            //     ['Nguyễn Khánh Linh', 'Nữ', '500k'],
+            //     ['Ngọc Trinh', 'Nữ', '700k'],
+            //     ['Tùng Sơn', 'Không xác định', 'Miễn phí'],
+            //     ['Kenny Sang', 'Không xác định', 'Miễn phí']
+            // ];
+            // //Khởi tạo đối tượng
+            // $excel = new PHPExcel();
+            // //Chọn trang cần ghi (là số từ 0->n)
+            // $excel->setActiveSheetIndex(0);
+            // //Tạo tiêu đề cho trang. (có thể không cần)
+            // $excel->getActiveSheet()->setTitle('demo ghi dữ liệu');
 
-    // public function getDangNhap()
-    // {
-    //     return view('dang-nhap');
-    // }
+            // //Xét chiều rộng cho từng, nếu muốn set height thì dùng setRowHeight()
+            // $excel->getActiveSheet()->getColumnDimension('A')->setWidth(20);
+            // $excel->getActiveSheet()->getColumnDimension('B')->setWidth(20);
+            // $excel->getActiveSheet()->getColumnDimension('C')->setWidth(30);
 
-    // public function postDangNhap(Request $rq)
-    // {
-    //     if($rq->usename == "admin" && $rq->password == "@2019@")
-    //     {
-    //         $rq->Session()->put('user',"admin");
-    //         return redirect('');
-    //     }
-    //     else
-    //     {
-    //         return view('dang-nhap')->with('error','Sai Thông Tin Đăng Nhập');
-    //     }
-    // }
-
-    // public function getThemThanhVien()
-    // {
-    //     return view('admin.them-thanh-vien');
-    // }
-
-    // public function postThemThanhVien(Request $rq)
-    // {
-    //     $data = array(
-    //                 'tenThanh' => $rq->tenThanh,
-    //                 'hoVaTen' => $rq->hoVaTen,
-    //                 'ngaySinh' => $rq->ngaySinh,
-    //                 'soDienThoai' => $rq->sdt,
-    //                 'khoaHoc' => $rq->khoaHoc,
-    //                 'nganhHoc' => $rq->nganhHoc,
-    //                 'hoDao' => $rq->hoDao,
-    //                 'maLop' => $rq->maLop,
-    //                 'mssv' => $rq->mssv,
-    //                 'tinhTrang' => $rq->tinhTrang,
-    //                 'doi' => $rq->doi,
-    //                 'ghiChu' => $rq->ghiChu,
-    //             );
-    //     $kt = new DanhSachMienModel();
-    //     $kq = $kt->kiemTraTonTai($data['hoVaTen']);
-    //     if($kq == 0)
-    //     {
-    //         //$thanhVien = new DanhSachMienModel();
-    //         $kt->tenThanh = $data['tenThanh'];
-    //         $kt->hoVaTen = $data['hoVaTen'];
-    //         $kt->ngaySinh = $data['ngaySinh'];
-    //         $kt->soDienThoai = $data['soDienThoai'];
-    //         $kt->khoaHoc = $data['khoaHoc'];
-    //         $kt->nganhHoc = $data['nganhHoc'];
-    //         $kt->hoDao = $data['hoDao'];
-    //         $kt->maLop = $data['maLop'];
-    //         $kt->mssv = $data['mssv'];
-    //         $kt->tinhTrang = $data['tinhTrang'];
-    //         $kt->doi = $data['doi'];
-    //         $kt->ghiChu = $data['ghiChu'];
-    //         $kt->save();
-    //         return view('admin.them-thanh-vien')->with('info', 'Thêm Thành Công');
-    //     }
-    //     else
-    //     {
-    //         return view('admin.them-thanh-vien')->with('info', 'Thành Viên Đã Tồn Tại');
-    //     }
+            // //Xét in đậm cho khoảng cột
+            // $excel->getActiveSheet()->getStyle('A1:C1')->getFont()->setBold(true);
+            // //Tạo tiêu đề cho từng cột
+            // //Vị trí có dạng như sau:
+            // *
+            //  * |A1|B1|C1|..|n1|
+            //  * |A2|B2|C2|..|n1|
+            //  * |..|..|..|..|..|
+            //  * |An|Bn|Cn|..|nn|
+             
+            // $excel->getActiveSheet()->setCellValue('A1', 'Tên');
+            // $excel->getActiveSheet()->setCellValue('B1', 'Giới Tính');
+            // $excel->getActiveSheet()->setCellValue('C1', 'Đơn giá(/shoot)');
+            // // thực hiện thêm dữ liệu vào từng ô bằng vòng lặp
+            // // dòng bắt đầu = 2
+            // $numRow = 2;
+            // foreach ($data as $row) {
+            //     $excel->getActiveSheet()->setCellValue('A' . $numRow, $row[0]);
+            //     $excel->getActiveSheet()->setCellValue('B' . $numRow, $row[1]);
+            //     $excel->getActiveSheet()->setCellValue('C' . $numRow, $row[2]);
+            //     $numRow++;
+            // }
+            // // Khởi tạo đối tượng PHPExcel_IOFactory để thực hiện ghi file
+            // // ở đây mình lưu file dưới dạng excel2007
+            // header('Content-type: application/vnd.ms-excel');
+            // header('Content-Disposition: attachment; filename="data.xls"');
+            // PHPExcel_IOFactory::createWriter($excel, 'Excel2007')->save('php://output');
+        // }
         
-    // }
-
-    // public function cuu($id)
-    // {
-    //     $kt = DanhSachMienModel::find($id);
-    //     $kt->tinhTrang = 'Cựu';
-    //     $kt->save();
-    //     return redirect('danh-sach-mien');
-    // }
-
-    // public function getSuaThanhVien($id)
-    // {
-    //     $data['duLieu'] = DanhSachMienModel::find($id)->get();
-    //     return view('admin.sua-thanh-vien')->with($data);
-    // }
-
-    // public function postSuaThanhVien(Request $rq, $id)
-    // {
-    //     $data = array(
-    //                 'tenThanh' => $rq->tenThanh,
-    //                 'hoVaTen' => $rq->hoVaTen,
-    //                 'ngaySinh' => $rq->ngaySinh,
-    //                 'soDienThoai' => $rq->sdt,
-    //                 'khoaHoc' => $rq->khoaHoc,
-    //                 'nganhHoc' => $rq->nganhHoc,
-    //                 'hoDao' => $rq->hoDao,
-    //                 'maLop' => $rq->maLop,
-    //                 'mssv' => $rq->mssv,
-    //                 'tinhTrang' => $rq->tinhTrang,
-    //                 'doi' => $rq->doi,
-    //                 'ghiChu' => $rq->ghiChu,
-    //             );
-    //     $kt = DanhSachMienModel::find($id);
-         
-    //         $kt->tenThanh = $data['tenThanh'];
-    //         $kt->hoVaTen = $data['hoVaTen'];
-    //         $kt->ngaySinh = $data['ngaySinh'];
-    //         $kt->soDienThoai = $data['soDienThoai'];
-    //         $kt->khoaHoc = $data['khoaHoc'];
-    //         $kt->nganhHoc = $data['nganhHoc'];
-    //         $kt->hoDao = $data['hoDao'];
-    //         $kt->maLop = $data['maLop'];
-    //         $kt->mssv = $data['mssv'];
-    //         $kt->tinhTrang = $data['tinhTrang'];
-    //         $kt->doi = $data['doi'];
-    //         $kt->ghiChu = $data['ghiChu'];
-    //         $kt->save();
-           
-    //         return redirect('danh-sach-mien');
-    // }
-
-    // public function getThemHinhAnh()
-    // {
-    //     return view('admin.them-hinh-anh');
-    // }
-
-    // public function postThemHinhAnh(Request $rq)
-    // {
-        
-    //     $kt = new hinhAnhModel();
-    //     $kt->noiDung = $rq->noiDung;
-    //     $kt->src = $rq->src;
-    //     $kt->save();
-    //     return view('admin.them-hinh-anh')->with('info', 'Thêm Thành Công');
-    // }
-
-    // public function DangXuat(request $rq)
-    // {
-    //     $rq->Session()->flush();
-    //     return redirect('');
-    // }
+    }
 }
