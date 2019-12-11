@@ -119,6 +119,9 @@
     @endif
     @if(isset($data))
       <div class="table-responsive">
+         <div class="container-fluid">  
+          <a href="{{ asset('xuat-excel/lop') }}"><button type="button" class="btn btn-success" style="float: right; margin-top: 3px;">Xuất excel</button></a>
+         </div>
          <span style="color: red; font-size: 20px;">* Khi xóa lớp sẽ xóa các sinh viên liên quan đến lớp đó</span>
          <h4 style="padding: 5px">Danh Sách Các Lớp Của Khoa Kỹ Thuật Và Công Nghệ</h4>
         <table class="table table-bordered table-sm">

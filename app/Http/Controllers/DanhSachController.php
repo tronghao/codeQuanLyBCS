@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\DanhSachModel;
 use Excel;
+use App\BomonModel;
+
+use App\CoVanModel;
+use App\LopModel;
+
 
 class DanhSachController extends Controller
 {
@@ -46,75 +51,73 @@ class DanhSachController extends Controller
             $this->xuatExcelSinhVien();
             //return redirect()->back();
         }
+        else if($nd=="bomon")
+        {
+            $this->xuatExcelBoMon();
+            //return redirect()->back();
+        }
+        else if($nd=="covanhoctap")
+        {
+            $this->xuatExcelCoVan();
+            //return redirect()->back();
+        }
+        else if($nd == "lop")
+        {
+             $this->xuatExcelLop();
+            //return redirect()->back();
+        }
+    }
+
+    public function xuatExcelBoMon()
+    {
+            $ext = "xls";
+            
+             Excel::create('BoMon', function($excel) {
+                 $excel->sheet('bomon', function($sheet) {
+                    $kt = new BomonModel();
+                    $data= $kt->getAllBoMon();
+                    $sheet->fromArray($data, null, 'A2', false, true);                   
+                 });
+            })->download($ext);
     }
 
     public function xuatExcelSinhVien()
     {
-        // if($nd == "sinhvien")
-        // {
-
-        // }
-        // else if($nd == "bomon")
-        // {
-            // $kt = new BomonModel(); 
-            // $data= $kt->getAllBoMon();
-             $ext = "xls";
-    
-            Excel::create('Bo_Mon', function($excel) {
-                $excel->sheet('bomon', function($sheet) {
-                    $sheet->fromArray(array(
-                        array('data1', 'data2'),
-                        array('data3', 'data4')
-                    ));
-                });
+            $ext = "xls";
+            
+             Excel::create('SinhVien', function($excel) {
+                 $excel->sheet('sinhvien', function($sheet) {
+                    $kt = new DanhSachModel();
+                    $data= $kt->getAllDanhSach();
+                    $sheet->fromArray($data, null, 'A2', false, true);                   
+                 });
             })->download($ext);
-            // include "lib/PHPExcel/Classes/PHPExcel.php";
-            // $data = [
-            //     ['Nguyễn Khánh Linh', 'Nữ', '500k'],
-            //     ['Ngọc Trinh', 'Nữ', '700k'],
-            //     ['Tùng Sơn', 'Không xác định', 'Miễn phí'],
-            //     ['Kenny Sang', 'Không xác định', 'Miễn phí']
-            // ];
-            // //Khởi tạo đối tượng
-            // $excel = new PHPExcel();
-            // //Chọn trang cần ghi (là số từ 0->n)
-            // $excel->setActiveSheetIndex(0);
-            // //Tạo tiêu đề cho trang. (có thể không cần)
-            // $excel->getActiveSheet()->setTitle('demo ghi dữ liệu');
+    }
 
-            // //Xét chiều rộng cho từng, nếu muốn set height thì dùng setRowHeight()
-            // $excel->getActiveSheet()->getColumnDimension('A')->setWidth(20);
-            // $excel->getActiveSheet()->getColumnDimension('B')->setWidth(20);
-            // $excel->getActiveSheet()->getColumnDimension('C')->setWidth(30);
+    public function xuatExcelCoVan()
+    {
+    
+             $ext = "xls";
+            
+             Excel::create('CoVan', function($excel) {
+                 $excel->sheet('covan', function($sheet) {
+                    $kt = new CoVanModel();
+                    $data= $kt->getAllThongTinCoVan();
+                    $sheet->fromArray($data, null, 'A2', false, true);                   
+                 });
+            })->download($ext);
+    }
 
-            // //Xét in đậm cho khoảng cột
-            // $excel->getActiveSheet()->getStyle('A1:C1')->getFont()->setBold(true);
-            // //Tạo tiêu đề cho từng cột
-            // //Vị trí có dạng như sau:
-            // *
-            //  * |A1|B1|C1|..|n1|
-            //  * |A2|B2|C2|..|n1|
-            //  * |..|..|..|..|..|
-            //  * |An|Bn|Cn|..|nn|
-             
-            // $excel->getActiveSheet()->setCellValue('A1', 'Tên');
-            // $excel->getActiveSheet()->setCellValue('B1', 'Giới Tính');
-            // $excel->getActiveSheet()->setCellValue('C1', 'Đơn giá(/shoot)');
-            // // thực hiện thêm dữ liệu vào từng ô bằng vòng lặp
-            // // dòng bắt đầu = 2
-            // $numRow = 2;
-            // foreach ($data as $row) {
-            //     $excel->getActiveSheet()->setCellValue('A' . $numRow, $row[0]);
-            //     $excel->getActiveSheet()->setCellValue('B' . $numRow, $row[1]);
-            //     $excel->getActiveSheet()->setCellValue('C' . $numRow, $row[2]);
-            //     $numRow++;
-            // }
-            // // Khởi tạo đối tượng PHPExcel_IOFactory để thực hiện ghi file
-            // // ở đây mình lưu file dưới dạng excel2007
-            // header('Content-type: application/vnd.ms-excel');
-            // header('Content-Disposition: attachment; filename="data.xls"');
-            // PHPExcel_IOFactory::createWriter($excel, 'Excel2007')->save('php://output');
-        // }
-        
+    public function xuatExcelLop()
+    {
+            $ext = "xls";
+            
+             Excel::create('Lop', function($excel) {
+                 $excel->sheet('lop', function($sheet) {
+                    $kt = new LopModel();
+                    $data= $kt->getAllThongTinLop();
+                    $sheet->fromArray($data, null, 'A2', false, true);                   
+                 });
+            })->download($ext);
     }
 }

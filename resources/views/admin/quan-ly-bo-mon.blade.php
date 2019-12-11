@@ -119,6 +119,9 @@
     @endif
     @if(isset($data))
       <div class="table-responsive">
+         <div class="container-fluid">  
+          <a href="{{ asset('xuat-excel/bomon') }}"><button type="button" class="btn btn-success" style="float: right; margin-top: 3px;">Xuất excel</button></a>
+         </div>
          <span style="color: red; font-size: 20px;">* Khi xóa bộ môn sẽ xóa các sinh viên, giảng viên và lớp liên quan đến bộ môn đó</span>
          <h4 style="padding: 5px">Danh Sách Các Bộ Môn Của Khoa Kỹ Thuật Và Công Nghệ</h4>
         <table class="table table-bordered table-sm">
@@ -139,8 +142,8 @@
               <td class="text-center"> {{ $i }} </td>
               <td> {{ $value['MaBoMon'] }} </td>
               <td> {{ $value['TenBoMon'] }} </td>
-              <td class="text-center"><button type="button" class="btn btn-success " data-toggle="modal" data-target="{{ '#modal_Sua_'.$value['MaBoMon'] }}"> Sửa </button> </td>
-              <td class="text-center"><a href="{{ asset('admin/xoa-bo-mon/'.$value['MaBoMon']) }}"> <button type="button" class="btn btn-primary" style="background-color: red; border: 0;"> Xóa </button> </a> </td>
+              <td class="text-center" width="70px"><button type="button" class="btn btn-success " data-toggle="modal" data-target="{{ '#modal_Sua_'.$value['MaBoMon'] }}"> Sửa </button> </td>
+              <td class="text-center" width="70px"><a href="{{ asset('admin/xoa-bo-mon/'.$value['MaBoMon']) }}"> <button type="button" class="btn btn-primary" style="background-color: red; border: 0;"> Xóa </button> </a> </td>
               
                 <!---------------MODAL SỬA---------------->
                   <div class="modal fade" id="{{ 'modal_Sua_'.$value['MaBoMon'] }}">

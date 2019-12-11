@@ -90,6 +90,9 @@
     @endif
     @if(isset($data))
       <div class="table-responsive">
+        <div class="container-fluid">  
+          <a href="{{ asset('xuat-excel/sinhvien') }}"><button type="button" class="btn btn-success" style="float: right; margin-top: 3px;">Xuất excel</button></a>
+         </div>
         <h4 style="padding: 5px">Danh Sách Ban Cán Lớp Sự Khoa Kỹ Thuật Và Công Nghệ</h4>
         <table class="table table-bordered table-sm">
             <thead>
@@ -118,7 +121,7 @@
               <td class="text-center"> {{ $value['SDT_SV'] }} </td>
               <td> {{ $value['EmailLop'] }} </td>
               <td> {{ $value['HoTen_CV'] }} </td>
-              <td class="text-center"> <button type="button" class="btn btn-primary" data-toggle="modal" data-target="{{ '#modal_chitiet_'.$value['MaSV'] }}"> Chi Tiết </button> </td>
+              <td class="text-center" width="90px"> <button type="button" class="btn btn-primary" data-toggle="modal" data-target="{{ '#modal_chitiet_'.$value['MaSV'] }}">Chi Tiết</button> </td>
               <!---------------MODAL CHI TIẾT---------------->
 
                 <div class="modal" id="{{ 'modal_chitiet_'.$value['MaSV'] }}">
@@ -192,7 +195,7 @@
               <td class="text-center"> {{ $value['SDT_SV'] }} </td>
               <td> {{ $value['EmailLop'] }} </td>
               <td> {{ $value['HoTen_CV'] }} </td>
-              <td class="text-center"> <button type="button" class="btn btn-primary" data-toggle="modal" data-target="{{ '#modal_chitiet_'.$value['MaSV'] }}"> Chi Tiết </button> </td>
+              <td class="text-center" width="90px"> <button type="button" class="btn btn-primary" data-toggle="modal" data-target="{{ '#modal_chitiet_'.$value['MaSV'] }}"> Chi Tiết </button> </td>
               <!---------------MODAL CHI TIẾT---------------->
 
                 <div class="modal" id="{{ 'modal_chitiet_'.$value['MaSV'] }}">

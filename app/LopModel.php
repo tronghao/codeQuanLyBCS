@@ -28,6 +28,13 @@ class LopModel extends Model
         return $kq;
     }
 
+    public function getAllThongTinLop()
+    {
+        $kt = new LopModel();
+        $kq = $kt->join('bomon', 'bomon.MaBoMon', '=', 'lop.MaBoMon')->join('covanhoctap', 'covanhoctap.MaCV', '=', 'lop.MaCV')->select('MaLop', 'TenLop', 'EmailLop', 'HoTen_CV', 'SDT_CV', 'Email_CV', 'TenBoMon')->get()->toArray();
+        return $kq;
+    }
+
     public function tonTai($maLop)
     {
     	$kt = new LopModel();

@@ -20,6 +20,13 @@ class CoVanModel extends Model
     	return $kq;
     }
 
+    public function getAllThongTinCoVan()
+    {
+        $kt = new CoVanModel();
+        $kq = $kt->join('bomon', 'bomon.MaBoMon', '=', 'CoVanHocTap.MaBoMon')->select('MaCV','HoTen_CV','SDT_CV','TenBoMon')->get()->toArray();
+        return $kq;
+    }
+
     public function getMaCoVanQuaName($name)
     {
     	$kt = new CoVanModel();
