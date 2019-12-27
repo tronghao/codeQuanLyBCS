@@ -10,6 +10,7 @@ use App\BomonModel;
 use App\LopModel;
 use App\KhoaHocModel;
 use App\CoVanModel;
+use App\DanhSachModel;
 
 class GuestController extends Controller
 {
@@ -66,5 +67,27 @@ class GuestController extends Controller
         $coVan = $cv->getAllCoVan();
 
     	return view('guest.trang-chu')->with(compact('dataLoc', 'boMon', 'lop', 'khoaHoc', 'coVan'));
+    }
+
+    public function timKiem(Request $rq)
+    {
+        $ds = new DanhSachController();
+        $data = $ds->getDanhSach();
+
+        $bm = new BomonModel(); 
+        $boMon = $bm->getAllBoMon();
+
+        $lp = new LopModel(); 
+        $lop = $lp->getAllLop();
+
+        $kh = new KhoaHocModel(); 
+        $khoaHoc = $kh->getAllKhoaHoc();
+
+        $cv = new CoVanModel(); 
+        $coVan = $cv->getAllCoVan();
+
+        $ds = new DanhSachModel();
+        $kqSearch = $ds->findSV($rq->search); 
+        return view('guest.search')->with(compact('boMon','lop', 'khoaHoc', 'coVan', 'kqSearch'));
     }
 }

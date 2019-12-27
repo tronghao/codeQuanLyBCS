@@ -18,7 +18,7 @@ class SinhVien extends Migration
             $table->String('HoTen_SV', 30);
             $table->String('SDT_SV', 10);
             $table->String('Email_SV', 30);
-            $table->String('ChucVu_SV', 10);
+            $table->String('ChucVu_SV', 20);
             $table->String('ChuyenNganh', 40);
             $table->String('KhoaHoc', 9);
             $table->Date('NamSinh');

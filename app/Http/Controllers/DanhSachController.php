@@ -70,7 +70,7 @@ class DanhSachController extends Controller
 
     public function xuatExcelBoMon()
     {
-            $ext = "xls";
+            $ext = "xlsx";
             
              Excel::create('BoMon', function($excel) {
                  $excel->sheet('bomon', function($sheet) {
@@ -83,7 +83,7 @@ class DanhSachController extends Controller
 
     public function xuatExcelSinhVien()
     {
-            $ext = "xls";
+            $ext = "xlsx";
             
              Excel::create('SinhVien', function($excel) {
                  $excel->sheet('sinhvien', function($sheet) {
@@ -97,7 +97,7 @@ class DanhSachController extends Controller
     public function xuatExcelCoVan()
     {
     
-             $ext = "xls";
+             $ext = "xlsx";
             
              Excel::create('CoVan', function($excel) {
                  $excel->sheet('covan', function($sheet) {
@@ -110,7 +110,7 @@ class DanhSachController extends Controller
 
     public function xuatExcelLop()
     {
-            $ext = "xls";
+            $ext = "xlsx";
             
              Excel::create('Lop', function($excel) {
                  $excel->sheet('lop', function($sheet) {

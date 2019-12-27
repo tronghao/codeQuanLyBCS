@@ -8,7 +8,6 @@ body{
 	background-repeat:no-repeat;
 	background-size:cover;
 }
-
 .chu h3{
 	color:#F06;
 	position:absolute;
@@ -32,7 +31,7 @@ body{
 	float:right;
 	
 }
-.loc_danh_sach_guest,.loc_danh_sach, .dang_nhap, .them_moi, .doi_mat_khau, .dang_xuat, .trang_chu, .quan_ly, .trang_chu_guest{
+.loc_danh_sach_guest,.loc_danh_sach, .dang_nhap, .them_moi, .doi_mat_khau, .dang_xuat, .trang_chu, .quan_ly, .trang_chu_guest, .searchBCS{
 	margin:5px 0;
 	
 }
@@ -69,6 +68,9 @@ body{
 .dang_nhap{
 	margin-right: 10px;
 	
+}
+.searchBCS{
+	margin-right: 10px;
 }
 
 .content{

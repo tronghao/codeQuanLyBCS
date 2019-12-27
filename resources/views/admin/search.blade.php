@@ -38,11 +38,9 @@
         alert(info);
       </script>
     @endif
-    @if(isset($data))
+    @if(isset($kqSearch))
       <div class="table-responsive">
-         <div class="container-fluid">  
-          <a href="{{ asset('xuat-excel/sinhvien') }}"><button type="button" class="btn btn-success" style="float: right; margin-top: 3px;">Xuất excel</button></a>
-         </div>
+         
         <h4 style="padding: 5px">Danh Sách Ban Cán Sự Lớp Khoa Kỹ Thuật Và Công Nghệ</h4>
         <table class="table table-bordered table-sm">
             <thead>
@@ -62,8 +60,9 @@
             </thead>
             <tbody>
               @php $i=1; @endphp
-              @foreach($data as $duLieu)
-                  @foreach($duLieu as $value)
+
+
+                  @foreach($kqSearch as $value)
             <tr>  
               <td class="text-center"> {{ $i }} </td>
               <td> {{ $value['MaLop'] }} </td>
@@ -244,7 +243,7 @@
             </tr>
             @php $i++ @endphp
                   @endforeach
-                @endforeach
+
             </tbody>
           </table>
       </div>

@@ -17,7 +17,7 @@ class LopModel extends Model
     public function getAllLop()
     {
     	$kt = new LopModel();
-    	$kq = $kt->select('TenLop')->get()->toArray();
+    	$kq = $kt->select('MaLop' ,'TenLop')->get()->toArray();
     	return $kq;
     }
 
@@ -42,6 +42,15 @@ class LopModel extends Model
     	if($kq>0)
     		return true;
     	else return false;
+    }
+
+    public function tonTaiTheoTen($tenLop, $maLop)
+    {
+        $kt = new LopModel();
+        $kq = $kt->whereRaw('TenLop = ? and MaLop = ?', [$tenLop, $maLop])->get()->count();
+        if($kq>0)
+            return true;
+        else return false;
     }
 
     public function themLop($rq)

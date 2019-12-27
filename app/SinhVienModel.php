@@ -34,6 +34,7 @@ class SinhVienModel extends Model
 		}
 		else
 		{
+            $gtLop = explode(' – ', $rq->tenLop);
 			$kt->MaSV = $rq->maSV;
             $kt->HoTen_SV = $rq->hoTenSV;
             $kt->SDT_SV = $rq->sdtSV;
@@ -44,7 +45,7 @@ class SinhVienModel extends Model
             $kt->NamSinh = $rq->ngaySinh;
             $kt->NoiSinh = $rq->noiSinh;
             $kt->HeDaoTao = $rq->heDaoTao;
-            $kt->MaLop = $lp->getMaLopQuaName($rq->tenLop);
+            $kt->MaLop = $gtLop[0];
             $kt->MaCV = $cv->getMaCoVanQuaName($rq->tenCoVan);
 			$kt->save();
 			return true;
@@ -76,4 +77,19 @@ class SinhVienModel extends Model
         $kt->MaCV = $cv->getMaCoVanQuaName($rq->tenCoVan);
 		$kt->save();
     }
+
+    public function getAllChuyenNganh()
+    {
+        $sv = new SinhVienModel();
+        $kq = $sv->select('ChuyenNganh')->distinct()->get()->toArray();
+        return $kq;
+    }
+
+    public function getAllKhoaHoc()
+    {
+        $sv = new SinhVienModel();
+        $kq = $sv->select('KhoaHoc')->distinct()->get()->toArray();
+        return $kq;
+    }
+   
 }

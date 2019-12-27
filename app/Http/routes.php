@@ -10,19 +10,12 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-Route::get('d', function()
-{
-	return view('admin.trang-chu');
-});
+
 Route::get('/{cd?}', 'GuestController@getTrangChu');
 Route::post('dang-nhap', 'UserController@dangNhap');
 Route::post('loc-danh-sach/{chedo}', 'GuestController@locDanhSach');
 Route::get('xuat-excel/{nd}', 'DanhSachController@xuatExcel');
-// Route::get('thong-ke', 'DanhSachMienController@thongKe');
-// Route::get('xem-danh-sach-theo-khoa/{khoa}', 'DanhSachMienController@xemTheoKhoa');
-// Route::get('hinh-anh', 'DanhSachMienController@hinhAnh');
-// Route::get('dang-nhap', 'DanhSachMienController@getDangNhap');
-// Route::post('dang-nhap', 'DanhSachMienController@postDangNhap');
+Route::post('tim-kiem', 'GuestController@timKiem');
 
 Route::group(['prefix'=>'admin', 'middleware' => 'admin'], function () {
     Route::get('home/{id?}', 'AdminController@getTrangChu');
@@ -50,6 +43,8 @@ Route::group(['prefix'=>'admin', 'middleware' => 'admin'], function () {
     Route::post('doi-mat-khau', 'UserController@doiMatKhau');
 
     Route::get('dang-xuat', 'UserController@dangXuat');
+
+    Route::post('tim-kiem', 'AdminController@timKiem');
 });
 
 

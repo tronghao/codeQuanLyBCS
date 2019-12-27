@@ -12,6 +12,7 @@ use App\LopModel;
 use App\KhoaHocModel;
 use App\CoVanModel;
 use App\SinhVienModel;
+use App\DanhSachModel;
 
 class AdminController extends Controller
 {
@@ -32,37 +33,50 @@ class AdminController extends Controller
         $cv = new CoVanModel(); 
         $coVan = $cv->getAllCoVan();
 
+        $sv = new SinhVienModel();
+        $chuyenNganh = $sv->getAllChuyenNganh();
+
         if($id == null)
         {
-        	return view('admin.trang-chu')->with(compact('data', 'boMon', 'lop', 'khoaHoc', 'coVan'));
+        	return view('admin.trang-chu')->with(compact('data', 'boMon', 'lop', 'khoaHoc', 'coVan', 'chuyenNganh'));
         }else if($id == 1)
         {
         	$info = "Đổi mật khẩu thành công";
-        	return view('admin.trang-chu')->with(compact('data', 'boMon', 'lop', 'khoaHoc', 'coVan', 'info'));
+        	return view('admin.trang-chu')->with(compact('data', 'boMon', 'lop', 'khoaHoc', 'coVan', 'info', 'chuyenNganh'));
         }else if($id == 2)
         {
         	$info = "Đổi mật khẩu không thành công, mật khẩu cũ không khớp!";
-        	return view('admin.trang-chu')->with(compact('data', 'boMon', 'lop', 'khoaHoc', 'coVan', 'info'));
+        	return view('admin.trang-chu')->with(compact('data', 'boMon', 'lop', 'khoaHoc', 'coVan', 'info', 'chuyenNganh'));
         }
         else if($id == 3)
         {
             $info = "Thêm thành công!";
-            return view('admin.trang-chu')->with(compact('data', 'boMon', 'lop', 'khoaHoc', 'coVan', 'info'));
+            return view('admin.trang-chu')->with(compact('data', 'boMon', 'lop', 'khoaHoc', 'coVan', 'info', 'chuyenNganh'));
         }
         else if($id == 4)
         {
             $info = "Lỗi thêm dữ liệu, dữ liệu bị trùng!";
-            return view('admin.trang-chu')->with(compact('data', 'boMon', 'lop', 'khoaHoc', 'coVan', 'info'));
+            return view('admin.trang-chu')->with(compact('data', 'boMon', 'lop', 'khoaHoc', 'coVan', 'info', 'chuyenNganh'));
         }
         else if($id == 5)
         {
             $info = "Đã cập nhật thông tin!";
-            return view('admin.trang-chu')->with(compact('data', 'boMon', 'lop', 'khoaHoc', 'coVan', 'info'));
+            return view('admin.trang-chu')->with(compact('data', 'boMon', 'lop', 'khoaHoc', 'coVan', 'info', 'chuyenNganh'));
         }
         else if($id == 6)
         {
             $info = "Xóa thành công!";
-            return view('admin.trang-chu')->with(compact('data', 'boMon', 'lop', 'khoaHoc', 'coVan', 'info'));
+            return view('admin.trang-chu')->with(compact('data', 'boMon', 'lop', 'khoaHoc', 'coVan', 'info', 'chuyenNganh'));
+        }
+        else if($id == 7)
+        {
+            $info = "Lỗi thêm sinh viên - Tên cố vấn không tồn tại!";
+            return view('admin.trang-chu')->with(compact('data', 'boMon', 'lop', 'khoaHoc', 'coVan', 'info', 'chuyenNganh'));
+        }
+        else if($id == 8)
+        {
+            $info = "Lỗi thêm sinh viên - Mã lớp và tên lớp không tồn tại!";
+            return view('admin.trang-chu')->with(compact('data', 'boMon', 'lop', 'khoaHoc', 'coVan', 'info', 'chuyenNganh'));
         }
         
     }
@@ -84,11 +98,25 @@ class AdminController extends Controller
         $cv = new CoVanModel(); 
         $coVan = $cv->getAllCoVan();
 
-    	return view('admin.trang-chu')->with(compact('dataLoc', 'boMon', 'lop', 'khoaHoc', 'coVan'));
+        $sv = new SinhVienModel();
+        $chuyenNganh = $sv->getAllChuyenNganh();
+    	return view('admin.trang-chu')->with(compact('dataLoc', 'boMon', 'lop', 'khoaHoc', 'coVan', 'chuyenNganh'));
     }
 
     public function themDuLieu($cheDo, Request $rq)
     {
+        if($cheDo == "sinhvien")
+        {
+           $cv = new CoVanModel();
+           if($cv->tonTaiTheoTen($rq->tenCoVan) == false)
+                return redirect('admin/home/7');
+            $lop = new LopModel();
+            $gtLop = explode(' – ', $rq->tenLop);
+            if(count($gtLop) < 2)
+                return redirect("admin/home/8");
+            if($lop->tonTaiTheoTen($gtLop[1], $gtLop[0]) == false)
+                return redirect('admin/home/8');
+        }
         $ds = new DanhSachController();
         $kq = $ds->themDuLieu($cheDo, $rq);
         if($kq == true)
@@ -131,17 +159,20 @@ class AdminController extends Controller
 
         $cv = new CoVanModel(); 
         $coVan = $cv->getAllCoVan();
+
+        $sv = new SinhVienModel();
+        $chuyenNganh = $sv->getAllChuyenNganh();
         if($id == null)
-    	   return view('admin.quan-ly-bo-mon')->with(compact('data', 'boMon','lop', 'khoaHoc', 'coVan'));
+    	   return view('admin.quan-ly-bo-mon')->with(compact('data', 'boMon','lop', 'khoaHoc', 'coVan', 'chuyenNganh'));
         else if($id == 1)
         {
             $info = "Cập nhật thành công!";
-            return view('admin.quan-ly-bo-mon')->with(compact('data', 'boMon','lop', 'khoaHoc', 'coVan', 'info'));
+            return view('admin.quan-ly-bo-mon')->with(compact('data', 'boMon','lop', 'khoaHoc', 'coVan', 'info', 'chuyenNganh'));
         }
         else if($id == 2)
         {
             $info = "Xóa Thành Công!";
-            return view('admin.quan-ly-bo-mon')->with(compact('data', 'boMon','lop', 'khoaHoc', 'coVan', 'info'));
+            return view('admin.quan-ly-bo-mon')->with(compact('data', 'boMon','lop', 'khoaHoc', 'coVan', 'info', 'chuyenNganh'));
         }
     }
 
@@ -175,17 +206,20 @@ class AdminController extends Controller
 
         $cv = new CoVanModel(); 
         $coVan = $cv->getAllCoVan();
+
+        $sv = new SinhVienModel();
+        $chuyenNganh = $sv->getAllChuyenNganh();
         if($id == null)
-           return view('admin.quan-ly-lop')->with(compact('data', 'boMon','lop', 'khoaHoc', 'coVan'));
+           return view('admin.quan-ly-lop')->with(compact('data', 'boMon','lop', 'khoaHoc', 'coVan', 'chuyenNganh'));
         else if($id == 1)
         {
             $info = "Cập nhật thành công!";
-            return view('admin.quan-ly-lop')->with(compact('data', 'boMon','lop', 'khoaHoc', 'coVan', 'info'));
+            return view('admin.quan-ly-lop')->with(compact('data', 'boMon','lop', 'khoaHoc', 'coVan', 'info', 'chuyenNganh'));
         }
         else if($id == 2)
         {
             $info = "Xóa Thành Công!";
-            return view('admin.quan-ly-lop')->with(compact('data', 'boMon','lop', 'khoaHoc', 'coVan', 'info'));
+            return view('admin.quan-ly-lop')->with(compact('data', 'boMon','lop', 'khoaHoc', 'coVan', 'info', 'chuyenNganh'));
         }
     }
 
@@ -219,17 +253,20 @@ class AdminController extends Controller
 
         $cv = new CoVanModel(); 
         $coVan = $cv->getAllCoVan();
+
+        $sv = new SinhVienModel();
+        $chuyenNganh = $sv->getAllChuyenNganh();
         if($id == null)
-           return view('admin.quan-ly-co-van')->with(compact('data', 'boMon','lop', 'khoaHoc', 'coVan'));
+           return view('admin.quan-ly-co-van')->with(compact('data', 'boMon','lop', 'khoaHoc', 'coVan', 'chuyenNganh'));
         else if($id == 1)
         {
             $info = "Cập nhật thành công!";
-            return view('admin.quan-ly-co-van')->with(compact('data', 'boMon','lop', 'khoaHoc', 'coVan', 'info'));
+            return view('admin.quan-ly-co-van')->with(compact('data', 'boMon','lop', 'khoaHoc', 'coVan', 'info', 'chuyenNganh'));
         }
         else if($id == 2)
         {
             $info = "Xóa Thành Công!";
-            return view('admin.quan-ly-co-van')->with(compact('data', 'boMon','lop', 'khoaHoc', 'coVan', 'info'));
+            return view('admin.quan-ly-co-van')->with(compact('data', 'boMon','lop', 'khoaHoc', 'coVan', 'info', 'chuyenNganh'));
         }
     }
 
@@ -245,5 +282,29 @@ class AdminController extends Controller
         $cv = new CoVanModel();
         $cv->suaCoVan($maCV, $rq);
         return redirect('admin/quan-ly/cvht/1');
+    }
+
+    public function timKiem(Request $rq)
+    {
+         $kt = new CoVanModel();
+        $data = $kt->getAllCoVanAndInfo();
+
+        $bm = new BomonModel(); 
+        $boMon = $bm->getAllBoMon();
+
+        $lp = new LopModel(); 
+        $lop = $lp->getAllLop();
+
+        $kh = new KhoaHocModel(); 
+        $khoaHoc = $kh->getAllKhoaHoc();
+
+        $cv = new CoVanModel(); 
+        $coVan = $cv->getAllCoVan();
+
+        $sv = new SinhVienModel();
+        $chuyenNganh = $sv->getAllChuyenNganh();
+        $ds = new DanhSachModel();
+        $kqSearch = $ds->findSV($rq->search); 
+        return view('admin.search')->with(compact('boMon','lop', 'khoaHoc', 'coVan', 'info', 'chuyenNganh', 'kqSearch'));
     }
 }

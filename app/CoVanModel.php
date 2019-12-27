@@ -43,6 +43,15 @@ class CoVanModel extends Model
     	else return false;
     }
 
+    public function tonTaiTheoTen($tenCV)
+    {
+        $kt = new CoVanModel();
+        $kq = $kt->where('HoTen_CV', '=', $tenCV)->get()->count();
+        if($kq>0)
+            return true;
+        else return false;
+    }
+
     public function themCoVan($rq)
     {
 			$kt = new CoVanModel();
